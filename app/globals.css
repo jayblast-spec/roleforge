@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0c0800;
+  --surface: #1a1100;
+  --surface-2: #241900;
+  --border: #3d2d00;
+  --foreground: #fff8e8;
+  --muted: #b89a50;
+  --accent: #f97316;
+  --accent-2: #fb923c;
+  --accent-soft: rgba(249,115,22,0.12);
+  --accent-glow: rgba(249,115,22,0.25);
+  --success: #34d399;
+  --warn: #fbbf24;
+  --danger: #f87171;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html { color-scheme: dark; }
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.forge-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(249,115,22,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 0%, rgba(251,146,60,0.10) 0%, transparent 60%),
+    var(--background);
+}
+
+.ember-grid {
+  background-image: radial-gradient(rgba(249,115,22,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@keyframes forge-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.forge-pulse { animation: forge-pulse 2s ease-in-out infinite; }
