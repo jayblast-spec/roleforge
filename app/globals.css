@@ -1,60 +1,9 @@
-@import "tailwindcss";
-
-:root {
-  color-scheme: dark;
-  background: #05060a;
-  --background: #05060a;
-  --foreground: #f8fafc;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  background: #05060a;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 15% 0%, rgba(34, 211, 238, 0.12), transparent 28rem),
-    radial-gradient(circle at 85% 12%, rgba(168, 85, 247, 0.12), transparent 28rem),
-    #05060a;
-  color: #f8fafc;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  text-rendering: geometricPrecision;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-textarea,
-input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-::selection {
-  background: rgba(255, 255, 255, 0.22);
-  color: #ffffff;
-}
-/* Hard guard for light CTA pills after Tailwind v4 migration. */
-.bg-white,
-button.bg-white,
-a.bg-white {
-  color: #05060a !important;
-}
-
-.border-white\/15,
-.border-white\/10 {
-  border-color: rgba(255, 255, 255, 0.14);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root { color-scheme: dark; background: #080a0f; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #080a0f; color: white; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { color: inherit; text-decoration: none; }
+button, textarea { font: inherit; }
