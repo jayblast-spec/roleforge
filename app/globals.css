@@ -47,3 +47,14 @@ button {
   background: rgba(255, 255, 255, 0.22);
   color: #ffffff;
 }
+/* Hard guard for light CTA pills after Tailwind v4 migration. */
+.bg-white,
+button.bg-white,
+a.bg-white {
+  color: #05060a !important;
+}
+
+.border-white\/15,
+.border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.14);
+}
