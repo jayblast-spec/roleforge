@@ -1,38 +1,63 @@
-# RoleForge
+<div align="center">
 
-RoleForge is a product in the AI Productivity Suite.
+# 🏗️ RoleForge
 
-## Promise
+**AI org role generator — build your team structure with a guided wizard, not a blank page.**
 
-Forge roles that make teams clearer instead of heavier.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-6366f1?style=for-the-badge)](https://roleforge.vercel.app)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![MIT License](https://img.shields.io/badge/License-MIT-34d399?style=for-the-badge)](LICENSE)
 
-RoleForge helps founders and operators design roles, responsibilities, scorecards, and hiring briefs before the org chart becomes confusion.
+</div>
 
-## Current v1
+---
 
-- Bespoke product cockpit UI
-- Live product-specific intake
-- `POST /api/intelligence`
-- Product-specific scoring and action queue
-- Contributor mission lanes
-- Mobile-friendly layout
+## ✨ Features
 
-## Contributor Missions
+- 🧙 **Wizard UI** — step-by-step prompts gather your company stage, size, and function
+- 📋 **Complete job descriptions** — AI generates role title, responsibilities, success metrics, and reporting lines
+- 🗂️ **Org structure output** — see roles arranged by team and hierarchy
+- 💼 **Startup to scale-up** — templates calibrated for 5-person teams through Series B orgs
+- 🔄 **Role gap analysis** — describe what you have and the AI surfaces what you are missing
+- 📥 **Export to CSV or PDF** — hand off to your HRIS or hiring manager immediately
+- ⚡ **Zero cost, zero login** — generate roles without an account or a recruiter
 
-- Org chart memory: Track roles and responsibilities over time.
-- Hiring scorecards: Generate interview rubrics from role outcomes.
-- Responsibility conflict detector: Find overlapping ownership and gaps.
-- Compensation bands: Add market-informed range guidance.
+---
 
-## Run Locally
+## 🚀 Quick Start
 
 ```bash
+git clone https://github.com/jayblast-spec/roleforge.git
+cd roleforge
 npm install
 npm run dev
 ```
 
-## Build
+Open [http://localhost:3000](http://localhost:3000)
 
-```bash
-npm run build
-```
+---
+
+## 🛠 Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| AI | Groq |
+| Styling | Tailwind CSS |
+| Deployment | Vercel |
+
+---
+
+## 📦 Deploy Your Own
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jayblast-spec/roleforge)
+
+Required env vars: `GROQ_API_KEY`
+
+---
+
+## 📄 License
+
+MIT © [Joy Ogunleye](https://github.com/jayblast-spec) · Built with [ArkNet Forge](https://arknet-os.vercel.app)
