@@ -60,4 +60,4 @@ Required env vars: `GROQ_API_KEY`
 
 ## 📄 License
 
-MIT © [ArkNet.digital](https://arknet.digital)
+MIT © [ArkNet.digital](https://www.arknet.digital/vault.html)
