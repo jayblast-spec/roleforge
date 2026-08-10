@@ -7,3 +7,10 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: #080a0f; color: white; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 a { color: inherit; text-decoration: none; }
 button, textarea { font: inherit; }
+
+/* RoleForge identity: molten violet + forge coral. */
+body { background-image: radial-gradient(circle at 14% 5%, rgba(168,85,247,.24), transparent 36%), radial-gradient(circle at 92% 22%, rgba(251,113,133,.14), transparent 30%); background-attachment: fixed; }
+main section:first-child { background: linear-gradient(180deg, rgba(38,17,55,.6), rgba(5,6,10,0)); }
+article, textarea, [class*="rounded-"] { transition: border-color .2s ease, transform .2s ease, background-color .2s ease; }
+article:hover { border-color: rgba(216,180,254,.45); transform: translateY(-2px); }
+button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid #fb7185; outline-offset: 3px; }
