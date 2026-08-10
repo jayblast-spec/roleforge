@@ -1,63 +1,67 @@
 <div align="center">
 
-# 🏗️ RoleForge
+# RoleForge
 
-**AI org role generator — build your team structure with a guided wizard, not a blank page.**
+### AI Org-Design Copilot For Founders Building Their First Team
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-6366f1?style=for-the-badge)](https://roleforge-five.vercel.app)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![MIT License](https://img.shields.io/badge/License-MIT-34d399?style=for-the-badge)](LICENSE)
+RoleForge is an AI org role generator built on Next.js and Groq. A founder describes a hiring need in plain language and RoleForge forges a role brief — responsibility map, 90-day scorecard, collaboration boundaries, and a hiring brief — through its `/api/forge` and `/api/intelligence` routes, which call Groq's chat completions API and fall back to a deterministic local engine when no key is configured.
+
+<p>
+  <a href="https://roleforge-five.vercel.app"><img alt="Live Demo" src="https://img.shields.io/badge/Live-Demo-1D4ED8?style=for-the-badge&logo=vercel&logoColor=white"></a>
+  <a href="https://github.com/jayblast-spec/roleforge"><img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+</p>
+
+<p>
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="React" src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black">
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white">
+  <img alt="Framer Motion" src="https://img.shields.io/badge/Framer%20Motion-1D4ED8?style=flat-square&logo=framer&logoColor=white">
+  <img alt="Groq" src="https://img.shields.io/badge/Groq-F55036?style=flat-square">
+  <img alt="Vercel" src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white">
+</p>
+
+<p>
+  <img alt="Animated RoleForge headline" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=18&duration=2600&pause=650&color=1D4ED8&center=true&vCenter=true&width=760&lines=Describe+the+role+you+need;Forge+a+responsibility+map+%2B+scorecard;Org+clarity+without+the+blank+page;Powered+by+Groq+on+Vercel">
+</p>
 
 </div>
 
----
+## What It Does
 
-## ✨ Features
+- Takes a plain-language hiring need (e.g. "founding operations lead who owns support, reporting, vendor follow-up") and turns it into a structured role brief
+- Generates a responsibility map, a 90-day scorecard, collaboration boundaries, and a hiring brief for each role
+- Scores organizational readiness ("Lagging" → "Leading") and returns a prioritized build sequence for the roles a team is missing
+- Runs with zero login and zero cost — no account required to generate output
 
-- 🧙 **Wizard UI** — step-by-step prompts gather your company stage, size, and function
-- 📋 **Complete job descriptions** — AI generates role title, responsibilities, success metrics, and reporting lines
-- 🗂️ **Org structure output** — see roles arranged by team and hierarchy
-- 💼 **Startup to scale-up** — templates calibrated for 5-person teams through Series B orgs
-- 🔄 **Role gap analysis** — describe what you have and the AI surfaces what you are missing
-- 📥 **Export to CSV or PDF** — hand off to your HRIS or hiring manager immediately
-- ⚡ **Zero cost, zero login** — generate roles without an account or a recruiter
+## How It Works
 
----
+- Next.js App Router with two API routes: `app/api/forge/route.ts` (readiness score, role list, build sequence) and `app/api/intelligence/route.ts` (`lib/product-engine.ts` intelligence map, action queue, contributor lanes)
+- Both routes call Groq's `chat/completions` endpoint using `GROQ_API_KEY` and degrade to a deterministic local fallback when the key is absent, so the product stays usable without a backend
+- UI is a single client component (`app/page.tsx`) built with Tailwind CSS 4 and Framer Motion, no database or auth layer
 
-## 🚀 Quick Start
+## Live
 
-```bash
-git clone https://github.com/jayblast-spec/roleforge.git
-cd roleforge
-npm install
-npm run dev
-```
+https://roleforge-five.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000)
-
----
-
-## 🛠 Stack
+## Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 14 (App Router) |
+|---|---|
+| Framework | Next.js (App Router) |
 | Language | TypeScript |
-| AI | Groq |
-| Styling | Tailwind CSS |
+| UI Library | React 19 |
+| AI | Groq (`GROQ_API_KEY`, chat completions) |
+| Styling | Tailwind CSS 4 |
+| Motion | Framer Motion |
 | Deployment | Vercel |
 
----
+<br>
 
-## 📦 Deploy Your Own
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=70&color=0:1D4ED8,55:0B1E3D,100:020617&text=ArkNet%20Digital%20%7C%20RoleForge&fontColor=FAFAFA&fontSize=18&fontAlign=50&animation=fadeIn">
+</p>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jayblast-spec/roleforge)
-
-Required env vars: `GROQ_API_KEY`
-
----
-
-## 📄 License
-
-MIT © [ArkNet.digital](https://www.arknet.digital/vault.html)
+<p align="center">
+Built by <a href="https://arknet.digital">ArkNet Digital</a> · <a href="mailto:michael@arknet.digital">michael@arknet.digital</a>
+</p>
