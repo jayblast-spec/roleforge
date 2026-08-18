@@ -1,3 +1,5 @@
+import { completeWithFallback } from "@/lib/ai-fallback";
+
 export const maxDuration = 30;
 
 export type Role = {
@@ -132,12 +134,6 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please complete all steps before forging." }, { status: 400 });
   }
 
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) {
-    await new Promise((r) => setTimeout(r, 1800));
-    return Response.json({ demo: true, result: DEMO });
-  }
-
   const prompt = `Company profile:
 - Industry: ${industry}
 - Stage: ${stage}
@@ -147,27 +143,7 @@ export async function POST(request: Request) {
 Generate the intelligent infrastructure roles this company needs to build now and over the next 12–24 months.`;
 
   try {
-    const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [
-          { role: "system", content: SYSTEM },
-          { role: "user", content: prompt },
-        ],
-        temperature: 0.4,
-        max_tokens: 2000,
-      }),
-    });
-
-    if (!groqRes.ok) {
-      return Response.json({ error: "AI service unavailable. Try again shortly." }, { status: 502 });
-    }
-
-    const data = await groqRes.json();
-    const raw = data?.choices?.[0]?.message?.content ?? "";
-
+    const { content: raw } = await completeWithFallback(SYSTEM, prompt, { temperature: 0.4, maxTokens: 2000 });
     let result: ForgeOutput;
     try {
       const match = raw.match(/\{[\s\S]*\}/);
@@ -177,7 +153,9 @@ Generate the intelligent infrastructure roles this company needs to build now an
     }
 
     return Response.json({ demo: false, result });
-  } catch {
-    return Response.json({ error: "Something went wrong. Try again." }, { status: 502 });
+  } catch (err) {
+    console.error("completeWithFallback failed:", err instanceof Error ? err.message : err);
+    await new Promise((r) => setTimeout(r, 1500));
+    return Response.json({ demo: true, result: DEMO });
   }
 }
