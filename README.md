@@ -36,9 +36,18 @@ RoleForge is an AI org role generator built on Next.js and Groq. A founder descr
 
 ## How It Works
 
-- Next.js App Router with two API routes: `app/api/forge/route.ts` (readiness score, role list, build sequence) and `app/api/intelligence/route.ts` (`lib/product-engine.ts` intelligence map, action queue, contributor lanes)
-- Both routes call Groq's `chat/completions` endpoint using `GROQ_API_KEY` and degrade to a deterministic local fallback when the key is absent, so the product stays usable without a backend
-- UI is a single client component (`app/page.tsx`) built with Tailwind CSS 4 and Framer Motion, no database or auth layer
+- `app/api/forge/route.ts` calls Groq's `chat/completions` endpoint against a typed `ForgeOutput` schema (readiness score, role list, build sequence), and degrades to a fixed demo output when `GROQ_API_KEY` is absent, so the product stays usable without a backend.
+- UI is a single client component (`app/page.tsx`) built with Tailwind CSS 4 and Framer Motion, no database or auth layer.
+
+## Engineering Notes
+
+**The real problem:** "what roles do I need to hire first" is a sequencing problem, not a list problem — a founder who hires a designer before validating the idea and a founder who hires an engineer too late are both making the same mistake in different directions.
+
+**The approach:** `ForgeOutput` forces the model to return roles *and* a build sequence together, not just a flat list — so the output states not just who to hire but in what order, tied to a readiness score for the stage the company is actually at.
+
+**One real number:** the demo fallback is a fully worked role list and build sequence, not a placeholder — the product is honestly demoable without a Groq key.
+
+**Not handled yet:** `app/api/intelligence` is a separate, disconnected decorative endpoint (`lib/product-engine.ts`) — it does not call Groq and isn't part of the real role-forging pipeline.
 
 ## Live
 
